@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\user\\Desktop\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\user\\Desktop\\WebApplication1\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\WebApplication1\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\WebApplication1\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\WebApplication1\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\user\\Desktop\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,8 +95,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\user\\Desktop\\Роланд\\WebApplication1\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\user\\Desktop\\WebApplication1\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\user\\Desktop\\WebApplication1\\DataAccess\\DataAccess.csproj"
               }
             }
           }
