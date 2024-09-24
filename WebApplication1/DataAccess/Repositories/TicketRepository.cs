@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    internal class TicketRepository : RepositoryBase<Ticket>, ITicketRepository
+    internal class TicketRepository : RepositoryBase<User>, ITicketRepository
     {
         public TicketRepository(RolandContext repositoryContext)
             : base(repositoryContext)
