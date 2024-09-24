@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    internal class TicketRepository : RepositoryBase<Ticket>, ITicketRepository
+    internal class RoleRepository : RepositoryBase<Role>, IRoleRepository
     {
-        public TicketRepository(RolandContext repositoryContext)
+        public RoleRepository(RolandContext repositoryContext)
             : base(repositoryContext)
         {
 

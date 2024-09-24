@@ -11,6 +11,12 @@ namespace DataAccess.Wrapper
     {
         IUserRepository User { get; }
         ITicketRepository Ticket { get; }
+        ISpecialRepository Special { get; }
+        IReviewRepository Review { get; }
+        IRoleRepository Role { get; }
+        IPassengerRepository Passenger { get; }
+        INotificationRepository Notification { get; }
+        IFlightRepository Flight { get; }
         void Save();
     }
 }
