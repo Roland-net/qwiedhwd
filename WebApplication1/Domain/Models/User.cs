@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Models
 {
-    public partial class Baggage
+    public partial class User
     {
         public User()
         {
