@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using WebApplication1.Models;
 
 namespace WebApplication1
@@ -45,7 +46,28 @@ namespace WebApplication1
             app.MapControllers();
 
             app.Run();
+
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Интернет-магазин API",
+                    Description = "Краткое описание вашего API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Пример контакта",
+                        Url = new Uri("https://example.com/contact")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Пример лицензии",
+                        Url = new Uri("https://example.com/license")
+                    }
+                });
+            });
             
+
         }
     }
 }

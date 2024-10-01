@@ -15,12 +15,23 @@ namespace SocNet.Controllers
             Context = context;
         }
 
+        /// <summary>
+        /// Получение всех аерапортов
+        /// </summary>
+        /// <returns>Список всех аерапортов</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
             List<Airport> Airport = Context.Airports.ToList();
             return Ok(Airport);
         }
+        /// <summary>
+        /// Получение аерапортов по идентиификатору.
+        /// </summary>
+        /// <param name="id">Индефикатор аерапорта.</param>
+        /// <returns>аерапорт с указанным индефикатором.</returns>
+        /// <response code="200">Возвращает аерапортов.</response>
+        /// <response code="404">Если аерапорт не найден.</response>
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -32,7 +43,12 @@ namespace SocNet.Controllers
             }
             return Ok(Airport);
         }
-
+        /// <summary>
+        /// Создание нового аерапорта.
+        /// </summary>
+        /// <param name="Airport">Индефикатор аерапорта.</param>
+        /// <returns>Созданный аерапорт.</returns>
+        /// <response code="201">Возвращает созданный аерапорт.</response>
         [HttpPost]
         public IActionResult Add(Airport Airport)
         {
@@ -40,7 +56,12 @@ namespace SocNet.Controllers
             Context.SaveChanges();
             return Ok();
         }
-
+        /// <summary>
+        /// Обновление существующего аерапорта.
+        /// </summary>
+        /// <param name="Airport">Данные для обновления аерапорта.</param>
+        /// <returns>Результат обновления.</returns>
+        /// <response code="204">Если аерапорт успешно обновлен.</response>
         [HttpPut]
         public IActionResult Update(Airport Airport)
         {
@@ -48,7 +69,13 @@ namespace SocNet.Controllers
             Context.SaveChanges();
             return Ok(Airport);
         }
-
+        /// <summary>
+        /// Удаление аерапорт по индентификатору.
+        /// </summary>
+        /// <param name="id">Индентификатору аерапорта.</param>
+        /// <returns>Результат удаления.</returns>
+        /// <response code="200">Если аерапорт успешно удален.</response>
+        /// <response code="400">Если аерапорт не найден.</response>
         [HttpDelete]
         public IActionResult Delete(int id)
         {

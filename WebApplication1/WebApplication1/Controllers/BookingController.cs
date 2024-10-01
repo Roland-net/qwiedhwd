@@ -14,14 +14,23 @@ namespace SocNet.Controllers
         {
             Context = context;
         }
-
+        /// <summary>
+        /// Получение всех бронирований
+        /// </summary>
+        /// <returns>Список всех бронирования</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
             List<Booking> Booking = Context.Bookings.ToList();
             return Ok(Booking);
         }
-
+        /// <summary>
+        /// Получение бронирования по идентиификатору.
+        /// </summary>
+        /// <param name="id">Индефикатор бронирования.</param>
+        /// <returns>бронирования с указанным индефикатором.</returns>
+        /// <response code="200">Возвращает бронирования.</response>
+        /// <response code="404">Если бронирования не найден.</response>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -32,7 +41,12 @@ namespace SocNet.Controllers
             }
             return Ok(Booking);
         }
-
+        /// <summary>
+        /// Создание нового бронирования.
+        /// </summary>
+        /// <param name="Booking">Индефикатор бронирования.</param>
+        /// <returns>Созданный бронирования.</returns>
+        /// <response code="201">Возвращает созданный бронирования.</response>
         [HttpPost]
         public IActionResult Add(Booking Booking)
         {
@@ -40,7 +54,12 @@ namespace SocNet.Controllers
             Context.SaveChanges();
             return Ok();
         }
-
+        /// <summary>
+        /// Обновление существующего бронирования.
+        /// </summary>
+        /// <param name="Booking">Данные для обновления бронирования.</param>
+        /// <returns>Результат обновления.</returns>
+        /// <response code="204">Если бронирования успешно обновлен.</response>
         [HttpPut]
         public IActionResult Update(Booking Booking)
         {
@@ -48,7 +67,13 @@ namespace SocNet.Controllers
             Context.SaveChanges();
             return Ok(Booking);
         }
-
+        /// <summary>
+        /// Удаление бронирования по индентификатору.
+        /// </summary>
+        /// <param name="id">Индентификатору бронирования.</param>
+        /// <returns>Результат удаления.</returns>
+        /// <response code="200">Если бронирования успешно удален.</response>
+        /// <response code="400">Если бронирования не найден.</response>
         [HttpDelete]
         public IActionResult Delete(int id)
         {
