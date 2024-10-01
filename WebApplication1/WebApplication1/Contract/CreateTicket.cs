@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domain.Models;
 
-namespace WebApplication1.Models
+namespace WebApplication1.Contract
 {
-    public partial class Ticket
+    public class CreateTicket
     {
-        public int TicketId { get; set; }
         public int? BookingId { get; set; }
         public string SeatNumber { get; set; } = null!;
         public string Class { get; set; } = null!;
         public decimal Price { get; set; }
 
-        public virtual Booking? Booking { get; set; }
+        
     }
 }

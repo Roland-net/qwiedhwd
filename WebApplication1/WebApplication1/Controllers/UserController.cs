@@ -1,8 +1,11 @@
 ﻿using Domain.Interface;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
+using Domain.Models;
 using BusinessLogic.Sevices;
+using WebApplication1.Contract;
+using Mapster;
+
 namespace SocNet.Controllers
 {
     [Route("api/[controller]")]
@@ -50,7 +53,7 @@ namespace SocNet.Controllers
         /// <returns>Созданный пользователь.</returns>
         /// <response code="201">Возвращает созданный пользователь.</response>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateUser req)
+        public async Task<IActionResult> Create(CreateUserRequest req)
         {
             var user = req.Adapt<User>();
             await _userService.Create(user);
@@ -63,11 +66,11 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если пользователь успешно обновлен.</response>
         [HttpPut]
-        public async Task <IActionResult> Update(CreateUser req)
+        public async Task <IActionResult> Update(CreateUserRequest req)
         {
-            Context.Users.Update(user);
-            Context.SaveChanges();
-            return Ok(user);
+            var user = req.Adapt<User>();
+            await _userService.Update(user);
+            return NoContent();
         }
         /// <summary>
         /// Удаление пользователя по индентификатору.
@@ -77,11 +80,14 @@ namespace SocNet.Controllers
         /// <response code="200">Если пользователь успешно удален.</response>
         /// <response code="400">Если пользователь не найден.</response>
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public async Task <IActionResult> Delete(int id)
         {
-            User? user = Context.Users.Where(x => x.UserId == id).FirstOrDefault();
-            Context.Users.Remove(user);
-            Context.SaveChanges();
+            var user = await _userService.GetById(id);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            await _userService.Delete(id);
             return Ok();
         }
     }

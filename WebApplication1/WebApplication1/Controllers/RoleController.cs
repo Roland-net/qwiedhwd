@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-using WebApplication1.Models;
+using DataAccess.Models;
+using Domain.Models;
 
 namespace SocNet.Controllers
 {

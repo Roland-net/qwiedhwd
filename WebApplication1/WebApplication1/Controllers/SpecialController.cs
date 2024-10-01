@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-using WebApplication1.Models;
+using DataAccess.Models;
+using Domain.Models;
+using Domain.Interface;
+using WebApplication1.Contract;
+using Mapster;
 
 namespace SocNet.Controllers
 {
@@ -9,53 +12,81 @@ namespace SocNet.Controllers
     [ApiController]
     public class SpecialController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private ISpecialService _specialService;
 
-        public SpecialController(RolandContext context)
+        public SpecialController(ISpecialService specialService)
         {
-            Context = context;
+            _specialService = specialService;
         }
-
+        /// <summary>
+        /// Получение всех данных
+        /// </summary>
+        /// <returns>Список всех данных</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<SpecialService> SpecialService = Context.SpecialServices.ToList();
-            return Ok(SpecialService);
+            var specialServices = await _specialService.GetAll();
+            return Ok(specialServices);
         }
-
+        /// <summary>
+        /// Получение данных по идентиификатору.
+        /// </summary>
+        /// <param name="id">Индефикатор данных.</param>
+        /// <returns>данных с указанным индефикатором.</returns>
+        /// <response code="200">Возвращает данных.</response>
+        /// <response code="404">Если данных не найден.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            SpecialService? SpecialService = Context.SpecialServices.Where(x => x.ServiceId == id).FirstOrDefault();
-            if (SpecialService == null)
+            var special = await _specialService.GetById(id);
+            if (special == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(SpecialService);
+            return Ok(special);
         }
-
+        /// <summary>
+        /// Создание новых данных.
+        /// </summary>
+        /// <param name="user">Индефикатор данных.</param>
+        /// <returns>Созданный данных.</returns>
+        /// <response code="201">Возвращает созданный данных.</response>
         [HttpPost]
-        public IActionResult Add(SpecialService SpecialService)
+        public async Task<IActionResult> Create(CreateSpecialService req)
         {
-            Context.SpecialServices.Add(SpecialService);
-            Context.SaveChanges();
-            return Ok();
+            var special = req.Adapt<SpecialService>();
+            await _specialService.Create(special);
+            return Ok(special);
         }
-
+        /// <summary>
+        /// Обновление существующего данных.
+        /// </summary>
+        /// <param name="user">Данные для обновления .</param>
+        /// <returns>Результат обновления.</returns>
+        /// <response code="204">Если данные успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(SpecialService SpecialService)
+        public async Task<IActionResult> Update(CreateSpecialService req)
         {
-            Context.SpecialServices.Update(SpecialService);
-            Context.SaveChanges();
-            return Ok(SpecialService);
+            var special = req.Adapt<SpecialService>();
+            await _specialService.Update(special);
+            return NoContent();
         }
-
+        /// <summary>
+        /// Удаление данных по индентификатору.
+        /// </summary>
+        /// <param name="id">Индентификатору данных.</param>
+        /// <returns>Результат удаления.</returns>
+        /// <response code="200">Если данных успешно удален.</response>
+        /// <response code="400">Если данных не найден.</response>
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            SpecialService? SpecialService = Context.SpecialServices.Where(x => x.ServiceId == id).FirstOrDefault();
-            Context.SpecialServices.Remove(SpecialService);
-            Context.SaveChanges();
+            var special = await _specialService.GetById(id);
+            if (special == null)
+            {
+                return BadRequest();
+            }
+            await _specialService.Delete(id);
             return Ok();
         }
     }

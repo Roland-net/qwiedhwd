@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using WebApplication1.Models;
-
+using Domain.Models;
+using DataAccess.Models;
 namespace WebApplication1
 {
     public class Program
